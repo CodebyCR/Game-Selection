@@ -1,6 +1,6 @@
 # **_Game_Selection_**
 
-**_This is a selection of easy games for learn Java.
+**_This is a selection of easy games for learn Java.<br>
 The most of this is console based, but feel free to add some GUI or modify the code if you want._**
 
 ### Current Game selection:
