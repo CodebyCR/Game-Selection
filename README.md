@@ -1,11 +1,10 @@
 # **_Game_Selection_**
 
--This is a selection of easy games for learn Java.
+**_This is a selection of easy games for learn Java.
+The most of this is console based, but feel free to add some GUI or modify the code if you want._**
 
--The most of this is console based, but feel free to add some GUI if you want.
-
-##Currently this selection includes:
+### Current Game selection:
 
 - a Rock-Paper-Scissors game.
 
-- coin toss coming very soon.
+- a Coin throw game, with multiplayer support.
