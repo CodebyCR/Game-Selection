@@ -9,19 +9,21 @@
 ********************************************************************************************************/
 import javax.swing.JOptionPane;
 
-public class Game_S_S_P {		//Schere, Stein, Papier.
+public class Game_Selection {		//Schere, Stein, Papier.
 	
 	public static void game_menu_ssp() {
 		String blend_layout;
-		int choise_blend = Extra.rendom_num(1, 3);
-		
+		int choise_blend = RandomGame.rendomNumber(1, 3);
+
+		//This is for a random Playmodus, for more Variation.
 		switch(choise_blend) {
-			case 1: blend_layout = "Wähle deine Waffe: ";
+			//enemy
+			case 1: blend_layout = "Wï¿½hle deine Waffe: ";
 				break;
-				
+				//classic 1
 			case 2: blend_layout = "Schere Stein oder Papier?";
 				break;
-				
+				//classic 2
 			default: blend_layout = "Schnick, Schnak, Schnuck.";
 		}
 		
@@ -35,7 +37,7 @@ public class Game_S_S_P {		//Schere, Stein, Papier.
 
 	public static void play_ssp (int my_choise) {	
 		String game_out = "";
-		int com_choise = Extra.rendom_num(1, 3);
+		int com_choise = RandomGame.rendomNumber(1, 3);
 		
 		if (my_choise == com_choise ){
 			game_out = "Ha! Unentschieden :D";
@@ -63,25 +65,22 @@ public class Game_S_S_P {		//Schere, Stein, Papier.
 		}
 		
 		JOptionPane.showMessageDialog(null, game_out);
-		
-		String runde = JOptionPane.showInputDialog(null,"Noch eine Runde? ;) "+ "\n1) Ja" + "\n2) Nein");
+
+		String roundMessage = "Noch eine Runde? ;) \n1)\tJa\n2)\tNein";
+		String runde = JOptionPane.showInputDialog(null,roundMessage);
 		int runde_int = Integer.parseInt(runde);
 		
 		if (runde_int == 1) {
 			game_menu_ssp();
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "Bis zum nächsten mal. :) ");	
+			JOptionPane.showMessageDialog(null, "Bis zum nï¿½chsten mal. :) ");	
 		}
 	}
 
 	
 	public static void main(String[] args) {
-		
 		game_menu_ssp();
-		
-		
-			
 	}
 
 	
