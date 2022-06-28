@@ -26,29 +26,44 @@ public class Player {
 
     /**
      * Add new Players to the playerList.
-     *
-     * @param playerReady
      */
-    public static void addPlayers(boolean playerReady) {
-        while (!playerList.isEmpty() && playerReady) {
+    public static void addPlayers() {
+        boolean playerReady = true;
+
+        while (playerReady) {
             String playerName = JOptionPane.showInputDialog("Pleace enter your name.");
 
             if (playerList.add(new Player(playerName))) {
-                playerReady = !JOptionPane.showInputDialog("Do you want to add more players?\n [ yes | no ].")
+                playerReady = JOptionPane.showInputDialog("Do you want to add more players?\n [ yes | no ].")
                         .equalsIgnoreCase("yes");
             }
         }
     }
 
     public static void addOrRemove() {
-        boolean addPlayer = !JOptionPane.showInputDialog("Want you to add or remove players?\n [ add | remove ].")
+        boolean addPlayer = JOptionPane.showInputDialog("Want you to add or remove players?\n [ add | remove ].")
                 .equalsIgnoreCase("add");
 
         if (addPlayer) {
-            Player.addPlayers(false);
+            addPlayers();
         } else {
-            //remove player(s)
+            removePlayer();
         }
+    }
+
+    private static void removePlayer(){
+        String removeMessage = "Please enter the number of the Player that should remove.\n";
+
+        for(int index = 0; index < playerList.size(); index++){
+            removeMessage += "Player " + (index+1) + ") " + playerList.get(index).getPlayername() + "\n";
+        }
+
+        int playerNumber = Integer.valueOf(JOptionPane.showInputDialog(removeMessage));
+        Player playerToRemove = playerList.get(playerNumber -1);
+
+        if(playerList.remove(playerToRemove)){
+            JOptionPane.showMessageDialog(null, "Player removed.");
+        };
     }
 
     //-------Get & Set------------------

@@ -8,32 +8,35 @@ public class Menu {
     public static void getMenu() {
 
         String menuChoose = "";
-        menuChoose = JOptionPane.showInputDialog("Welcome to the Game Selection!\n"
-                + "Please choose an option:\n"
-                + "1. Rock Paper Scissors\n"
-                + "2. Coin Throw\n"
-                + "3. Statistic\n"
-                + "4. Add / Remove_Player\n"
-                + "5. Exit\n");
-
-
+        Integer choose = 0;
         boolean chooseIsValid = true;
+
+        Player.addPlayers();
 
         while (chooseIsValid) {
 
-            Player.addPlayers(true);
+            menuChoose = JOptionPane.showInputDialog("Welcome to the Game Selection!\n"
+                    + "Please choose an option:\n"
+                    + "1. Rock Paper Scissors\n"
+                    + "2. Coin Throw\n"
+                    + "3. Statistic\n"
+                    + "4. Add / Remove_Player\n"
+                    + "5. Exit\n");
 
-            switch (menuChoose) {
-                case "Rock Paper Scissors":
+
+            choose = Integer.valueOf(menuChoose);
+
+            switch (choose) {
+                case 1:
                     new RockPaperScissorsGame();
                     //add multipayer..
                     break;
 
-                case "Coin Throw":
+                case 2:
                     new CoinThrowGame();
                     break;
 
-                case "Statistic":
+                case 3:
                     if (JOptionPane.showInputDialog("You want to see the statistics? [ yes | no ].").equalsIgnoreCase("yes")) {
                         Statistics.show();
                     }else{
@@ -41,17 +44,18 @@ public class Menu {
                     }
                     break;
 
-                case "Add_/_Remove_Player":
+                case 4:
                     Player.addOrRemove();
                     break;
 
-                case "Exit":
+                case 5:
+                    chooseIsValid = false;
                     JOptionPane.showMessageDialog(null, "See you soon. :) ");
                     break;
 
                 default:
-                    chooseIsValid = false;
-                    JOptionPane.showMessageDialog(null, "Invalid Input.\nPleace menuChoose an Option.");
+                    chooseIsValid = true;
+                    JOptionPane.showMessageDialog(null, "Invalid Input.\nPleace choose an Option.");
             }
         }
     }
