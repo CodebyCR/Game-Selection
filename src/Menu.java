@@ -54,7 +54,6 @@ public class Menu {
                     break;
 
                 default:
-                    chooseIsValid = true;
                     JOptionPane.showMessageDialog(null, "Invalid Input.\nPleace choose an Option.");
             }
         }

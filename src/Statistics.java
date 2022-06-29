@@ -23,9 +23,11 @@ public class Statistics {
 
     public static void show() {
         for (Player player : playerList) {
-            JOptionPane.showMessageDialog(null, player.getPlayername() + " hat " + player.getStatistics().getWin() + " von seinen " +
+            String statisticMessage = player.getName() + " hat " + player.getStatistics().getWin() + " von seinen " +
                     (player.getStatistics().getWin() + player.getStatistics().getLose()) + " Spiele gewonnen," + "\n dass sind " +
-                    player.getStatistics().winPercentage((player.getStatistics().getWin() + player.getStatistics().getLose())) + "% aller Spiele.");
+                    player.getStatistics().winPercentage((player.getStatistics().getWin() + player.getStatistics().getLose())) + "% of all Games.";
+
+            JOptionPane.showMessageDialog(null, statisticMessage);
         }
     }
 
@@ -68,27 +70,25 @@ public class Statistics {
      * Write the score for every member and do a return to txt out.
      */
     public static String score(Player player, String winOrLose) {
-        String score = "Spiel Nr." + gameCount + "\t" + "Spieler: " + player.getPlayername() + "\n\t\t" + "Du hattest "
-                + player.getHeadOrNumber() + " gew�hlt. \t" + "Du hast " + winOrLose + "\n";
+        String score = "Game Nr." + gameCount + "\t" + "Player: " + player.getName() + "\n\t\t" + "Your choice was "
+                + player.getHeadOrNumber() + ".";
 
         return score;
     }
 
-    ;
 
     /*
-     * write and read the Game_Statistik.txt
+     * write and read the Game_Statistic.txt
      */
     public void txtOut(String score) {
-        try (FileWriter outputStream = new FileWriter("\\Muenzwurf\\Game_Statistik.txt")) {
+        try (FileWriter outputStream = new FileWriter("\\Game_Statistic.txt")) {
             outputStream.write(score);
-            outputStream.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try (Scanner scan = new Scanner(new File("\\Muenzwurf\\Game_Statistik.txt"))) {
+        try (Scanner scan = new Scanner(new File("Game_Statistic.txt"))) {
 
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();

@@ -16,7 +16,7 @@ public class CoinThrowGame {
         while (play) {
 
             for (Player player : playerList) {
-                player.setHeadOrNumber(JOptionPane.showInputDialog(player.getPlayername() + " choose 'Head' or 'Number'.\n"));
+                player.setHeadOrNumber(JOptionPane.showInputDialog(player.getName() + " choose 'Head' or 'Number'.\n"));
 
                 String winOrLose = winOrLose(player);
                 JOptionPane.showMessageDialog(null, winOrLose);

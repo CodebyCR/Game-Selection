@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class Player {
     public static ArrayList<Player> playerList = new ArrayList<Player>();
@@ -12,12 +13,9 @@ public class Player {
     private Coin coin;
     private String headOrNumber;
 
-    //default constructor
-    public Player() {
+    //TODO: win, lose, gameRounds attributes for statistics
 
-    }
-
-    //construkter for new Players.
+    //Constructor for new Players.
     public Player(String playername) {
         this.playername = playername;
         statistics = new Statistics();
@@ -31,7 +29,7 @@ public class Player {
         boolean playerReady = true;
 
         while (playerReady) {
-            String playerName = JOptionPane.showInputDialog("Pleace enter your name.");
+            String playerName = JOptionPane.showInputDialog("Please enter your name.");
 
             if (playerList.add(new Player(playerName))) {
                 playerReady = JOptionPane.showInputDialog("Do you want to add more players?\n [ yes | no ].")
@@ -55,7 +53,7 @@ public class Player {
         String removeMessage = "Please enter the number of the Player that should remove.\n";
 
         for(int index = 0; index < playerList.size(); index++){
-            removeMessage += "Player " + (index+1) + ") " + playerList.get(index).getPlayername() + "\n";
+            removeMessage += "Player " + (index+1) + ") " + playerList.get(index).getName() + "\n";
         }
 
         int playerNumber = Integer.valueOf(JOptionPane.showInputDialog(removeMessage));
@@ -68,12 +66,8 @@ public class Player {
 
     //-------Get & Set------------------
 
-    public String getPlayername() {
+    public String getName() {
         return playername;
-    }
-
-    public String setPlayername(String playername) {
-        return this.playername = playername;
     }
 
     public String getHeadOrNumber() {
@@ -92,5 +86,13 @@ public class Player {
         return coin;
     }
 
+    public void setHandSign(String handSign) {
+        this.handSign = handSign;
+    }
+
+    public int getHandSign() {
+        Optional<Integer> myChoice = Optional.ofNullable(Integer.valueOf(handSign));
+        return myChoice.orElse(1);
+    }
 }
 
